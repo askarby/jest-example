@@ -1,0 +1,95 @@
+$completed: #737373;
+
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.item {
+  display: flex;
+  align-content: stretch;
+}
+
+tl-checkbox {
+}
+
+.label-container {
+  flex-grow: 1;
+
+  .label {
+    padding-left: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.striked {
+      position: relative;
+      color: $completed;
+    }
+
+    &.striked:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0.5rem;
+      width: 100%;
+      height: 3px;
+      background: $completed;
+      animation-name: strike;
+      animation-duration: 0.5s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+input {
+  flex-grow: 1;
+  font-size: 20px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  outline: 0;
+}
+
+@mixin button($color) {
+  background-color: $color;
+  border-radius: 0.2rem;
+  border: 0;
+  outline: 0;
+
+  &:hover {
+    background-color: lighten($color, 20%);
+  }
+
+  &:active {
+    background-color: darken($color, 20%);
+  }
+}
+
+button.confirm {
+  @include button(#2ECC40);
+}
+
+button.cancel {
+  margin-left: 0.2rem;
+  @include button(#FF4136);
+}
+
+button.delete {
+  @include button(#aeaeae);
+  display: none;
+}
+
+:hover > button.delete {
+  display: inline-block;
+}
+
+
+

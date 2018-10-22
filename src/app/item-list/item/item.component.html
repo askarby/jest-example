@@ -1,0 +1,27 @@
+<div class="item">
+  <tl-checkbox [(checked)]="completed"></tl-checkbox>
+
+  <!-- Edit-mode -->
+  <ng-container *ngIf="isEditing; else readOnly">
+    <input type="text" #task
+           [value]="item.task"
+           (keydown.enter)="confirm(task.value)"
+           (keydown.escape)="cancel()">
+    <button class="confirm" (click)="confirm(task.value)">
+      <fa-icon icon="check"></fa-icon>
+    </button>
+    <button class="cancel" (click)="cancel()">
+      <fa-icon icon="times"></fa-icon>
+    </button>
+  </ng-container>
+
+  <!-- Read-only-mode -->
+  <ng-template #readOnly>
+    <div class="label-container" (click)="toggleMode()">
+      <span class="label" [ngClass]="{striked: completed}">{{item.task}}</span>
+    </div>
+    <button class="delete" (click)="delete.emit(item)">
+      <fa-icon icon="trash"></fa-icon>
+    </button>
+  </ng-template>
+</div>

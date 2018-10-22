@@ -1,0 +1,17 @@
+<ul>
+  <li tl-item *ngFor="let item of items"
+      [item]="item"
+      (change)="update.emit($event)"
+      (delete)="delete.emit($event)">
+  </li>
+</ul>
+
+<form novalidate [formGroup]="form" novalidate>
+  Enter the text of a new task in the textbox below.
+  <div class="new-item-editor">
+    <input type="text" formControlName="task">
+    <button (click)="addItem()">
+      <fa-icon icon="plus"></fa-icon>
+    </button>
+  </div>
+</form>

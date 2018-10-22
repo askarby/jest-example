@@ -1,0 +1,48 @@
+$size: 1.3rem;
+$border-width: 0.15em;
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+
+  &:checked + label svg path {
+    stroke: green !important;
+  }
+
+  &:checked + label svg path {
+    stroke-dashoffset: 0;
+  }
+
+  &:focus + label {
+    transform: scale(1.03);
+  }
+}
+
+input[type="checkbox"] + label {
+  display: block;
+  border: $border-width solid #333;
+  width: $size;
+  height: $size;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:active {
+    transform: scale(1.05);
+    border-radius: 0.5rem;
+  }
+
+  svg {
+    pointer-events: none;
+    path {
+      fill: none;
+      stroke: #333;
+      stroke-width: 1rem;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 101;
+      transition: all 350ms cubic-bezier(1, 0, .37, .91);
+    }
+  }
+}
