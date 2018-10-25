@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test -- --watch=false",
+    "test:watch": "ng test --watch=true",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
