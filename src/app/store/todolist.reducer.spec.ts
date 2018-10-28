@@ -24,8 +24,8 @@ describe('todoListReducer', () => {
       expect(entitiesFromState.length).toBe(2);
       expect(idsFromState.length).toBe(2);
       items.forEach(item => {
-        expect(entitiesFromState).toContain(item);
-        expect(idsFromState).toContain(item.id);
+        expect(entitiesFromState).toContainEqual(item);
+        expect(idsFromState).toContainEqual(item.id);
       });
     });
   });
@@ -40,8 +40,8 @@ describe('todoListReducer', () => {
       const idsFromState = reduced.ids;
       expect(entitiesFromState.length).toBe(1);
       expect(idsFromState.length).toBe(1);
-      expect(entitiesFromState).toContain(item);
-      expect(idsFromState).toContain(item.id);
+      expect(entitiesFromState).toContainEqual(item);
+      expect(idsFromState).toContainEqual(item.id);
     });
   });
 
@@ -56,8 +56,8 @@ describe('todoListReducer', () => {
       const idsFromState = reduced.ids;
       expect(entitiesFromState.length).toBe(1);
       expect(idsFromState.length).toBe(1);
-      expect(entitiesFromState).toContain(item);
-      expect(idsFromState).toContain(item.id);
+      expect(entitiesFromState).toContainEqual(item);
+      expect(idsFromState).toContainEqual(item.id);
     });
   });
 

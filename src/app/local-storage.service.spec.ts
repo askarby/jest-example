@@ -2,7 +2,7 @@ import { getTestBed, TestBed } from '@angular/core/testing';
 
 import { LocalStorageService } from './local-storage.service';
 import { WindowService } from './window.service';
-import createSpyObj = jasmine.createSpyObj;
+import { createSpyObj } from 'jest-createspyobj';
 
 describe('LocalStorageService', () => {
   let localStorageService: LocalStorageService;
@@ -40,7 +40,7 @@ describe('LocalStorageService', () => {
   describe('getArray', () => {
     it('should retrieve array-data from LocalStorage', () => {
       const rawData = '["a", "b", "c"]';
-      window.localStorage.getItem.and.returnValue(rawData);
+      window.localStorage.getItem.mockReturnValue(rawData);
       expect(localStorageService.getArray('key')).toEqual(['a', 'b', 'c']);
     });
   });

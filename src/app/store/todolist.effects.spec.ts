@@ -17,7 +17,7 @@ import { createState, createTodoListItem } from '../testing/model-factory.utilit
 import { TodoListItem } from '../todo-list-item.model';
 import { AppState } from './app.state';
 import { Store } from '@ngrx/store';
-import createSpyObj = jasmine.createSpyObj;
+import { createSpyObj } from 'jest-createspyobj';
 
 describe('TodoListEffects', () => {
   let effects: TodoListEffects;
@@ -70,7 +70,7 @@ describe('TodoListEffects', () => {
 
     it(`should acquire using LocalStorageService and dispatch a "${TodoListActionTypes.GET_ALL_ITEMS_RESULT}"-action`, done => {
       const items = [createTodoListItem('test')];
-      localStorageService.getArray.and.returnValue(items);
+      localStorageService.getArray.mockReturnValue(items);
 
       effects.getItems$.subscribe(action => {
         expect(action).toEqual(new GetAllItemsResult(items));
@@ -84,7 +84,9 @@ describe('TodoListEffects', () => {
 
     it(`should dispatch a "${TodoListActionTypes.GET_ALL_ITEMS_FAILURE}"-action (on error)`, done => {
       const error = 'foo';
-      localStorageService.getArray.and.throwError(error);
+      localStorageService.getArray.mockImplementation(() => {
+        throw Error(error);
+      });
       effects.getItems$.subscribe((action: GetAllItemsFailure) => {
         expect(action.type).toEqual(TodoListActionTypes.GET_ALL_ITEMS_FAILURE);
         expect(action.error).toEqual(new Error(error));
