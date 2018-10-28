@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemComponent snapshot of markup should match the markup for a item 1`] = `
+<li
+  change={[Function EventEmitter]}
+  delete={[Function EventEmitter]}
+  isEditing="false"
+  item={[Function Object]}
+>
+  <div
+    class="item"
+  >
+    <tl-checkbox
+      ng-reflect-checked="false"
+    />
+    
+    <div
+      class="label-container"
+    >
+      <span
+        class="label"
+        ng-reflect-klass="label"
+        ng-reflect-ng-class="[object Object]"
+      >
+        test
+      </span>
+    </div>
+    <button
+      class="delete"
+    >
+      <fa-icon
+        icon="trash"
+      />
+    </button>
+    
+  </div>
+</li>
+`;

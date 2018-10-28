@@ -168,4 +168,11 @@ describe('ItemComponent', () => {
       });
     });
   });
+
+  describe('snapshot of markup', () => {
+    it('should match the markup for a item', () => {
+      fixture.detectChanges();
+      expect(fixture).toMatchSnapshot();
+    });
+  });
 });
